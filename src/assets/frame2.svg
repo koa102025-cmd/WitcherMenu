@@ -1,0 +1,18 @@
+<svg width="301" height="28" viewBox="0 0 301 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0.00146484 0.5L301.001 1.5" stroke="gray"/>
+<path d="M6.50146 3.5L295.501 3.5" stroke="gray"/>
+<path d="M6.50146 23.5L295.501 23.5" stroke="gray"/>
+<path d="M301.001 26.5L0.00146099 27.5" stroke="gray"/>
+<path d="M300.501 1.5L300.501 26.5" stroke="gray"/>
+<path d="M0.501465 0.5L0.501462 27.5" stroke="gray"/>
+<line x1="295.001" y1="3.5" x2="295.001" y2="8.5" stroke="gray"/>
+<line x1="295.001" y1="23.5" x2="295.001" y2="19.5" stroke="gray"/>
+<line x1="294.501" y1="8" x2="299.501" y2="8" stroke="gray"/>
+<line x1="295.501" y1="20" x2="299.501" y2="20" stroke="gray"/>
+<line x1="299.001" y1="8.5" x2="299.001" y2="19.5" stroke="gray"/>
+<line y1="-0.5" x2="5" y2="-0.5" transform="matrix(0 1 1 0 7.50146 3.5)" stroke="gray"/>
+<line y1="-0.5" x2="4" y2="-0.5" transform="matrix(1.02771e-08 -1 -1 -1.02771e-08 6.50146 23.5)" stroke="gray"/>
+<line y1="-0.5" x2="5" y2="-0.5" transform="matrix(-1 0 0 1 7.50146 8.5)" stroke="gray"/>
+<line y1="-0.5" x2="4" y2="-0.5" transform="matrix(-1 -1.0277e-08 -1.0277e-08 1 6.50146 20.5)" stroke="gray"/>
+<line y1="-0.5" x2="11" y2="-0.5" transform="matrix(0 1 1 0 3.50146 8.5)" stroke="gray"/>
+</svg>

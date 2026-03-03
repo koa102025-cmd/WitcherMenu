@@ -6,6 +6,15 @@
 	background: url("geralt_bg.jpg") no-repeat center center;
 	background-size: cover;
 	display: flex;
+	transition: background 0.2s ease-in-out;
+}
+
+.audioActive {
+	background: #000 !important;
+}
+
+.audioActive::after {
+	opacity: 0.2;
 }
 
 .mainScreen::after {
@@ -142,4 +151,23 @@
 	gap: 2px;
 	flex-grow: 1;
 	width: 100%;
+}
+
+.detailsPanel {
+	margin-top: 14rem;
+	margin-left: 5rem;
+	flex-grow: 1;
+	display: flex;
+	justify-content: start;
+	z-index: 1;
+	animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }
