@@ -1,13 +1,12 @@
 import { useEffect, useRef } from "react";
-import menuTheme from "../assets/sounds/witcher3-main-menu-theme.mp3";
 
 const BackgroundMusic = () => {
-	const audioRef = useRef(new Audio(menuTheme));
+	const audioRef = useRef(new Audio("/witcher3-main-menu-theme.mp3"));
 
 	useEffect(() => {
 		const audio = audioRef.current;
 		audio.loop = true;
-		audio.volume = 0.4;
+		audio.volume = 0.1;
 
 		const handleInteraction = () => {
 			audio.play().catch(() => {});
