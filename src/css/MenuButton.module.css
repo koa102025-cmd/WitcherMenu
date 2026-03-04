@@ -38,7 +38,7 @@
 
 .buttonWrapper:hover::before,
 .buttonWrapper.active::before {
-	background-image: url("../assets/border.svg");
+	background-image: url("../assets/icons/border.svg");
 	opacity: 1;
 	animation: pulseBorder 1s infinite ease-in-out;
 }

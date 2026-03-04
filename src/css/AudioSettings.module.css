@@ -22,7 +22,7 @@
 }
 
 .settingRow::before {
-	background-image: url("../assets/frame3.svg") !important;
+	background-image: url("../assets/icons/frame3.svg") !important;
 }
 
 .settingLabel {
@@ -56,7 +56,7 @@
 	align-items: center;
 
 	border: 6px solid transparent;
-	border-image-source: url("../assets/frame2.svg");
+	border-image-source: url("../assets/icons/frame2.svg");
 
 	border-image-slice: 10 20;
 
