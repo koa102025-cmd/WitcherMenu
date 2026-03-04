@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from "react";
+// Styles and assets imports...
 import mainStyles from "../css/WitcherMenu.module.css";
 import audioStyles from "../css/AudioSettings.module.css";
 import btnStyles from "../css/MenuButton.module.css";
-
 import sliderSoundSrc from "../assets/sounds/parametr-sound.m4a";
 import hoverSoundSrc from "../assets/sounds/button-change-sound.m4a";
 
@@ -10,15 +10,21 @@ const AudioSettings = ({ volumes, onVolumeChange }) => {
 	const sliderAudioRef = useRef(null);
 	const hoverAudioRef = useRef(null);
 
+	// Initialize audio instances on mount
 	useEffect(() => {
 		sliderAudioRef.current = new Audio(sliderSoundSrc);
-		sliderAudioRef.current.volume = 0.6;
 		sliderAudioRef.current.preload = "auto";
 
 		hoverAudioRef.current = new Audio(hoverSoundSrc);
-		hoverAudioRef.current.volume = 0.5;
 		hoverAudioRef.current.preload = "auto";
 	}, []);
+
+	// Sync audio object volume with global state (range: 0.0 - 1.0)
+	useEffect(() => {
+		const currentVol = volumes.effects / 100;
+		if (sliderAudioRef.current) sliderAudioRef.current.volume = currentVol;
+		if (hoverAudioRef.current) hoverAudioRef.current.volume = currentVol;
+	}, [volumes.effects]);
 
 	const playHoverSound = () => {
 		if (hoverAudioRef.current) {
@@ -29,6 +35,9 @@ const AudioSettings = ({ volumes, onVolumeChange }) => {
 
 	const playStepSound = () => {
 		if (sliderAudioRef.current) {
+			/** * Clone node to allow overlapping sounds during fast slider movement
+			 * Clean up element after playback ends to prevent memory leaks
+			 */
 			const soundNode = sliderAudioRef.current.cloneNode();
 			soundNode.volume = sliderAudioRef.current.volume;
 			soundNode.play().catch(() => {});
@@ -37,6 +46,7 @@ const AudioSettings = ({ volumes, onVolumeChange }) => {
 	};
 
 	const handleChange = (type, value, currentValue) => {
+		// Only trigger update and sound if the integer value has changed
 		if (parseInt(value) !== parseInt(currentValue)) {
 			onVolumeChange(type, value);
 			playStepSound();
@@ -46,7 +56,7 @@ const AudioSettings = ({ volumes, onVolumeChange }) => {
 	return (
 		<div className={mainStyles.detailsPanel}>
 			<div className={audioStyles.audioSettings}>
-				{/* Music Volume Row */}
+				{/* Music Volume Slider */}
 				<div
 					className={`${audioStyles.settingRow} ${btnStyles.buttonWrapper}`}
 					onMouseEnter={playHoverSound}>
@@ -68,7 +78,7 @@ const AudioSettings = ({ volumes, onVolumeChange }) => {
 					</div>
 				</div>
 
-				{/* Effects Volume Row */}
+				{/* Effects Volume Slider */}
 				<div
 					className={`${audioStyles.settingRow} ${btnStyles.buttonWrapper}`}
 					onMouseEnter={playHoverSound}>

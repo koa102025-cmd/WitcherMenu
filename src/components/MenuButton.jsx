@@ -9,10 +9,12 @@ const MenuButton = ({
 	onMouseEnter,
 	onMouseLeave,
 	onClick,
+	effectsVolume = 100, // Pass volume from global settings
 }) => {
 	const hoverAudioRef = useRef(null);
 	const clickAudioRef = useRef(null);
 
+	// Initialize audio on component mount
 	useEffect(() => {
 		hoverAudioRef.current = new Audio(hoverSound);
 		clickAudioRef.current = new Audio(clickSoundSrc);
@@ -21,10 +23,17 @@ const MenuButton = ({
 		clickAudioRef.current.preload = "auto";
 	}, []);
 
+	// Keep button sounds in sync with global effects volume
+	useEffect(() => {
+		const vol = effectsVolume / 100;
+		if (hoverAudioRef.current) hoverAudioRef.current.volume = vol;
+		if (clickAudioRef.current) clickAudioRef.current.volume = vol;
+	}, [effectsVolume]);
+
 	const playSound = (audio) => {
 		if (audio) {
-			audio.currentTime = 0;
-			audio.play().catch(() => {});
+			audio.currentTime = 0; // Reset sound to start
+			audio.play().catch(() => {}); // Catch browser autoplay blocks
 		}
 	};
 
